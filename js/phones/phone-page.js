@@ -8,12 +8,13 @@ export default class PhonesPage {
         this._element = element;
         this._render();
 
-        this._initViewer;
-        this._initCatalog;
-        this._initCart;
+        this._initViewer();
+        this._initCatalog();
+        this._initCart();
     }
+
     _initViewer(){
-        this._viewer = new phoneViewer({
+        this._viewer = new PhoneViewer({
             element: this._element.querySelector('[data-component="phone-viewer"]')
         })
 
@@ -26,7 +27,7 @@ export default class PhonesPage {
 
     _initCatalog(){
         this._catalog = new PhonesCatalog({
-            element: this._element.querySelector('[data-phone-catalog]'),
+            element: this._element.querySelector('[data-component="phone-catalog"]'),
             phones: PhonesService.getAll()
         })
 

@@ -1,4 +1,4 @@
-import PhonesPage from './phones/PhonesPage.js';
+import PhonesPage from './phones/phone-page.js';
 
 const phonesPage = new PhonesPage({
     element: document.querySelector('[data-component="container"]')
