@@ -11,6 +11,8 @@ export default class PhonesPage {
         this._initViewer();
         this._initCatalog();
         this._initCart();
+
+
     }
 
     _initViewer(){
@@ -23,6 +25,9 @@ export default class PhonesPage {
             this._catalog.show();
         })
 
+        this._viewer.subscribe('add-to-cart', (id)=>{
+            this._cart.addToCart(id);
+        })
     }
 
     _initCatalog(){
@@ -36,12 +41,16 @@ export default class PhonesPage {
             this._catalog.hide();
             this._viewer.show(phoneDetails); 
         })
+
+        this._catalog.subscribe('add-to-cart', (id)=>{
+            this._cart.addToCart(id);
+        })
     }
 
     _initCart() {
         this._cart = new ShoppingCart({
-            element: this._element.querySelector('[data-component="shopping-cart"]')
-
+            element: this._element.querySelector('[data-component="shopping-cart"]'),
+            phones: PhonesService.getAll()
         })
     }
 
