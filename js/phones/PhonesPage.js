@@ -1,6 +1,6 @@
 import PhonesCatalog from './components/phones-catalog.js';
 import PhoneViewer from './components/phoneViewer.js';
-//import ShoppingCart from './components/shopping-cart.js';
+import ShoppingCart from './components/shopping-cart.js';
 import PhonesService from './services/phones-service.js';
 
 export default class PhonesPage {
@@ -15,7 +15,7 @@ export default class PhonesPage {
     _initViewer(){
         this._viewer = new phoneViewer({
             element: this._element.querySelector('[data-component="phone-viewer"]')
-        });
+        })
 
         this._viewer.subscribe('back',()=>{
             this._viewer.hide();
@@ -28,7 +28,7 @@ export default class PhonesPage {
         this._catalog = new PhonesCatalog({
             element: this._element.querySelector('[data-phone-catalog]'),
             phones: PhonesService.getAll()
-        });
+        })
 
         this._catalog.subscribe('phone-selected',  (id) => { 
             const phoneDetails = PhonesService.getById(id);
