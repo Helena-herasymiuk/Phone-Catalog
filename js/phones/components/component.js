@@ -13,14 +13,14 @@ export default class Component{
     		callback(event);
     	})
     }
-    subscribe( eventName, callback ){
+    subscribe(eventName, callback){
     	if(!this._callbackArray[eventName]){
     		this._callbackArray[eventName] = [];
     	}
     	this._callbackArray[eventName].push(callback);
     }
 
-	emit( eventName, data){
+	emit(eventName, data){
 		const callbacks = this._callbackArray[eventName];
         if (!callbacks) {
             return;
