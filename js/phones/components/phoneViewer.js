@@ -28,8 +28,6 @@ export default class PhoneViewer extends Component{
     super.show(); 
     }
 
-
-
   _render() {
         this._element.innerHTML = `
         <img 
