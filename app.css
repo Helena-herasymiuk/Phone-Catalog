@@ -1,8 +1,21 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 20px;
-  background-color: lightgoldenrodyellow;
+  background-color: #A17FFF;
+  color: black;
+}
+
+header {
+  background-color: #EBEDEF;
+  height: 60px;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+header > h1 {
+  margin: 0;
+  line-height: 60px;
 }
 
 .phone-images {
@@ -16,6 +29,8 @@ body {
 
 .phones {
   list-style: none;
+
+  padding-inline-start: 0;
 }
 
 .thumb {
@@ -40,7 +55,25 @@ body {
   padding-top: 15px;
 }
 
+.col-md-2 {
+
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  justify-content: center;
+}
+
+
+
 /** Detail View **/
+@media (min-width: 993px) {
+   .col-md-10 {
+    width: 100%;
+  }
+ 
+}
+
 img.phone {
   float: left;
   margin-right: 3em;
@@ -102,6 +135,3 @@ ul.specs dt {
   font-weight: bold;
 }
 
-h1 {
-  border-bottom: 1px solid gray;
-}

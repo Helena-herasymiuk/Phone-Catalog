@@ -16,21 +16,6 @@ export default class PhonesPage {
 
     }
 
-    _initViewer(){
-        this._viewer = new PhoneViewer({
-            element: this._element.querySelector('[data-component="phone-viewer"]')
-        })
-
-        this._viewer.subscribe('back',()=>{
-            this._viewer.hide();
-            this._showPhones();
-        })
-
-        this._viewer.subscribe('add-to-cart', (id)=>{
-            this._cart.addToCart(id);
-        })
-    }
-
     _initCatalog(){
         this._catalog = new PhonesCatalog({
             element: this._element.querySelector('[data-component="phone-catalog"]'),
@@ -41,6 +26,8 @@ export default class PhonesPage {
         this._catalog.subscribe('phone-selected',  (id) => { 
             PhonesService.getById(id).then((phoneDetails)=>{
               this._catalog.hide();
+              this._filter.hide();
+              this._cart.hide();
               this._viewer.show(phoneDetails); 
         });
         })
@@ -68,6 +55,23 @@ export default class PhonesPage {
         this._filter.subscribe('order-change', (eventData) => {
           this._showPhones();
         });
+    }
+
+        _initViewer(){
+        this._viewer = new PhoneViewer({
+            element: this._element.querySelector('[data-component="phone-viewer"]')
+        })
+
+        this._viewer.subscribe('back',()=>{
+            this._viewer.hide();
+            this._filter.show();
+            this._cart.show();
+            this._showPhones();
+        })
+
+        this._viewer.subscribe('add-to-cart', (id)=>{
+            this._cart.addToCart(id);
+        })
     }
 
     async _showPhones(){
